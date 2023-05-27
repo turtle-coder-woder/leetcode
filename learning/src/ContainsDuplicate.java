@@ -1,15 +1,12 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class ContainsDuplicate {
     public boolean containsDuplicate(int[] nums) {
-        Map<Integer,Boolean> map = new HashMap<>();
+        Set<Integer> map = new HashSet<>();
         for(int i=0; i <nums.length; i++){
-            if(map.get(nums[i])!=null){
+            if(!map.add(nums[i])){
                 return true;
             }
-            map.put(nums[i], true);
         }
         return false;
     }
