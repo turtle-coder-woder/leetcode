@@ -3,9 +3,8 @@ import java.util.Iterator;
 
 public class Solution {
     public static void main(String args[]) {
-        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        new Rotate1DArray().rotate(nums, 3);
-        printPrimitiveArray(nums);
+        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 6};
+        new ContainsDuplicate().containsDuplicate(nums);
     }
 
     public static void printArray(Object[] arr) {

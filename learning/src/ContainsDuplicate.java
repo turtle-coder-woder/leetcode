@@ -1,15 +1,15 @@
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ContainsDuplicate {
     public boolean containsDuplicate(int[] nums) {
-        Arrays.sort(nums);
-        //since nums.length>1 as given in input constraint, we can safely use first val of arr
-        int prev = nums[0];
-        for(int i=1; i <nums.length; i++){
-            if(prev == nums[i]){
+        Map<Integer,Boolean> map = new HashMap<>();
+        for(int i=0; i <nums.length; i++){
+            if(map.get(nums[i])!=null){
                 return true;
             }
-            prev = nums[i];
+            map.put(nums[i], true);
         }
         return false;
     }
