@@ -3,10 +3,24 @@ import java.util.Iterator;
 
 public class Solution {
     public static void main(String args[]) {
-        int[] nums1 = {1,2,2,1,3};
-        int[] nums2 = {2,2,3,3,3,3};
-        int[]  ar = new IntersectionOf2Array().intersect(nums1, nums2);
-        printPrimitiveArray(ar);
+        char[][] board ={{'.','.','.','.','5','.','.','1','.'},
+                {
+                        '.','4','.','3','.','.','.','.','.'},
+                {
+                        '.','.','.','.','.','3','.','.','1'},
+                {
+                        '8','.','.','.','.','.','.','2','.'},
+                {
+                        '.','.','2','.','7','.','.','.','.'},
+                {
+                        '.','1','5','.','.','.','.','.','.'},
+                {
+                        '.','.','.','.','.','2','.','.','.'},
+                {
+                        '.','2','.','9','.','.','.','.','.'},
+                {
+                        '.','.','4','.','.','.','.','.','.'}};
+        System.out.println(new isValidSoduko().isValidSudoku(board));
     }
 
     public static void printArray(Object[] arr) {
