@@ -3,24 +3,7 @@ import java.util.Iterator;
 
 public class Solution {
     public static void main(String args[]) {
-        char[][] board ={{'.','.','.','.','5','.','.','1','.'},
-                {
-                        '.','4','.','3','.','.','.','.','.'},
-                {
-                        '.','.','.','.','.','3','.','.','1'},
-                {
-                        '8','.','.','.','.','.','.','2','.'},
-                {
-                        '.','.','2','.','7','.','.','.','.'},
-                {
-                        '.','1','5','.','.','.','.','.','.'},
-                {
-                        '.','.','.','.','.','2','.','.','.'},
-                {
-                        '.','2','.','9','.','.','.','.','.'},
-                {
-                        '.','.','4','.','.','.','.','.','.'}};
-        System.out.println(new isValidSoduko().isValidSudoku(board));
+        System.out.println(new ReverseInteger().reverse(-2147483648));
     }
 
     public static void printArray(Object[] arr) {
