@@ -3,7 +3,7 @@ import java.util.Iterator;
 
 public class Solution {
     public static void main(String args[]) {
-        System.out.println(new ReverseInteger().reverse(-2147483648));
+        System.out.println(new FirstUniqueCharacter().firstUniqChar("leetcode"));
     }
 
     public static void printArray(Object[] arr) {
