@@ -3,7 +3,9 @@ import java.util.Iterator;
 
 public class Solution {
     public static void main(String args[]) {
-        System.out.println(new FirstUniqueCharacter().firstUniqChar("leetcode"));
+        StringMatching x=new StringMatching("aabaaabaaac","aabaaac");
+        printPrimitiveArray(x.pi);
+        System.out.println(x.find());
     }
 
     public static void printArray(Object[] arr) {
