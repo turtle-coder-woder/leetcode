@@ -1,4 +1,5 @@
 public class convertSortedArrayToBinarySearchTree {
+    //https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/editorial/
     public TreeNode sortedArrayToBST(int[] nums) {
         // since nums will always have atleast 1 number so we can proceed
         return makeNode(nums, 0, nums.length - 1, new TreeNode());
