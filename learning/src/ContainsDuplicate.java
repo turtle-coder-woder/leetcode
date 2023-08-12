@@ -10,4 +10,5 @@ public class ContainsDuplicate {
         }
         return false;
     }
+
 }

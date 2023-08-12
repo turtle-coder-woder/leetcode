@@ -1,11 +1,21 @@
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 public class Solution {
     public static void main(String args[]) {
-        StringMatching x=new StringMatching("aabaaabaaac","aabaaac");
-        printPrimitiveArray(x.pi);
-        System.out.println(x.find());
+        Map<String, Integer> fruits = new HashMap<>();
+        fruits.put("apple", 10);
+        fruits.put("banana", 20);
+        fruits.put("orange", 30);
+
+        fruits.forEach((k,v) -> {
+            System.out.println("value"+v);
+            System.out.println("key "+k);});
+//        StringMatching x=new StringMatching("aabaaabaaac","aabaaac");
+//        printPrimitiveArray(x.pi);
+//        System.out.println(x.find());
     }
 
     public static void printArray(Object[] arr) {
