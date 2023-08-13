@@ -5,17 +5,7 @@ import java.util.Map;
 
 public class Solution {
     public static void main(String args[]) {
-        Map<String, Integer> fruits = new HashMap<>();
-        fruits.put("apple", 10);
-        fruits.put("banana", 20);
-        fruits.put("orange", 30);
-
-        fruits.forEach((k,v) -> {
-            System.out.println("value"+v);
-            System.out.println("key "+k);});
-//        StringMatching x=new StringMatching("aabaaabaaac","aabaaac");
-//        printPrimitiveArray(x.pi);
-//        System.out.println(x.find());
+        System.out.println(new HammingDistance().hammingDistance(1,4));
     }
 
     public static void printArray(Object[] arr) {
