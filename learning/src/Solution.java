@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class Solution {
     public static void main(String args[]) {
-        System.out.println(new ThreeSum().threeSum(new int[]{3, 0, -2, -1, 1, 2}));
+        System.out.println(new LengthOfLongestSubString().lengthOfLongestSubstring("dvdf"));
     }
 
     public static void printArray(Object[] arr) {
