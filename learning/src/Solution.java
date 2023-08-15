@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class Solution {
     public static void main(String args[]) {
-        System.out.println(new HammingDistance().hammingDistance(1,4));
+        System.out.println(new ThreeSum().threeSum(new int[]{3, 0, -2, -1, 1, 2}));
     }
 
     public static void printArray(Object[] arr) {

@@ -4,37 +4,28 @@ import java.util.List;
 
 public class ThreeSum {
     public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> ans = new ArrayList();
-        if (nums.length < 3) {
-            return ans;
-        }
-
         Arrays.sort(nums);
-        int i = 0, j, k = nums.length - 1;
-        while (k - i > 1) { //will move j in between them
-            j = i + 1;
-            int miniK = k;
-            while (miniK - j > 0) {
-                int sum = nums[i] + nums[j] + nums[miniK];
-                if (sum == 0) {
-                    ArrayList<Integer> subList = new ArrayList();
-                    subList.add(nums[i]);
-                    subList.add(nums[j]);
-                    subList.add(nums[miniK]);
-                    if (!ans.contains(subList)) {
-                        ans.add(subList);
-                    }
-                    miniK--;
-                } else if (sum < 0) {
-                    j++;
-                } else {
-                    miniK--;
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i < nums.length && nums[i] <= 0; ++i) //number from i which are greater than 0 cant form sol, asn i,j,k>0 can form 0
+            if (i == 0 || nums[i - 1] != nums[i]) { // for case [0,0,0,0,0,0] & for case [-2,-2,-2,-2,1,1]
+                twoSum(nums, i, result);
+            }
+        return result;
+    }
+    void twoSum(int[] nums, int i, List<List<Integer>> result) {
+        int j = i + 1, k = nums.length - 1;
+        while (j < k) {
+            int sum = nums[i] + nums[j] + nums[k];
+            if (sum < 0) {
+                ++j;
+            } else if (sum > 0) {
+                --k;
+            } else {
+                result.add(Arrays.asList(nums[i], nums[j++], nums[k--]));
+                while (j < k && nums[j] == nums[j - 1]){
+                    ++j; // as we dont want duplicates from same i,(J),k
                 }
             }
-
-            i++;
         }
-
-        return ans;
     }
 }
