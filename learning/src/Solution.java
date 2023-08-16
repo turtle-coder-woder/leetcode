@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class Solution {
     public static void main(String args[]) {
-        System.out.println(new LengthOfLongestSubString().lengthOfLongestSubstring("dvdf"));
+        System.out.println(new IncreasingTriplet().increasingTriplet(new int[]{0,4,2,1,0,-1,-3}));
     }
 
     public static void printArray(Object[] arr) {
