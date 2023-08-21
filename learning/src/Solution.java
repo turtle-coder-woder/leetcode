@@ -1,11 +1,12 @@
 import easyCollection.*;
+import helper.MissingRange;
 
 import java.util.Arrays;
 import java.util.Iterator;
 
 public class Solution {
     public static void main(String args[]) {
-        System.out.println(new IncreasingTriplet().increasingTriplet(new int[]{0,4,2,1,0,-1,-3}));
+        System.out.println(new MissingRange().findMissingRanges(new int[]{0,1,3,50,75},0,99));
     }
 
     public static void printArray(Object[] arr) {
