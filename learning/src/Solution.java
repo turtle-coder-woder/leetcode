@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 public class Solution {
     public static void main(String args[]) {
-        System.out.println(new MissingRange().findMissingRanges(new int[]{0,1,3,50,75},0,99));
+        System.out.println(new LetterCombinationOfPhoneNumbers().letterCombinations("234"));
     }
 
     public static void printArray(Object[] arr) {
