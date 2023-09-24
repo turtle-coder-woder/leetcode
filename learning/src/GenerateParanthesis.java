@@ -9,36 +9,25 @@ public class GenerateParanthesis {
 
     public List<String> generateParenthesis(int n) {
         List<String> ans = new ArrayList<>();
-        fill(2 * n, ans, "");
+        fill(n, ans, new StringBuilder(), 0, 0);
         return ans;
     }
 
-    void fill(int expectedSize, List<String> ans, String last) {
-        if (last.length() >= expectedSize) {
-            if (validForParanthesis(last)) {
-                ans.add(last);
-            }
+    void fill(int n, List<String> ans, StringBuilder stringBuilder, int open, int close) {
+        if (stringBuilder.length() == 2 * n) {
+            ans.add(stringBuilder.toString());
             return;
         }
 
-        fill(expectedSize, ans, last + OPEN);
-        fill(expectedSize, ans, last + CLOSE);
-    }
-
-    boolean validForParanthesis(String value) {
-        Stack<Character> stack = new Stack<>();
-        for (char c : value.toCharArray()) {
-            if (c == CLOSE) {
-                if (stack.isEmpty() || stack.peek() == CLOSE) {
-                    return false;
-                }
-
-                stack.pop();
-            }else{
-                stack.push(c);
-            }
+        if (open < n) {
+            stringBuilder.append(OPEN);
+            fill(n, ans, stringBuilder, open + 1, close);
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         }
-
-        return stack.isEmpty();
+        if (close < open) {
+            stringBuilder.append(CLOSE);
+            fill(n, ans, stringBuilder, open, close + 1);
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
     }
 }
