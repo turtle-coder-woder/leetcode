@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 public class Solution {
     public static void main(String args[]) {
-        System.out.println(new GenerateParanthesis().generateParenthesis(3));
+        System.out.println(new GenerateAllPermutations().permute(new int[]{1,2,3}));
     }
 
     public static void printArray(Object[] arr) {
