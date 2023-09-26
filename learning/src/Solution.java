@@ -8,21 +8,8 @@ import java.util.List;
 
 public class Solution {
     public static void main(String args[]) {
-        List<List<Integer>> ans = new GenerateSubsets().subsets(new int[]{1,2,3,4});
-        ans.sort(new Comparator<List<Integer>>() {
-            @Override
-            public int compare(List<Integer> o1, List<Integer> o2) {
-                return getHashSum(o1).compareTo(getHashSum(o2));
-            }
-            public String getHashSum(List<Integer> o){
-                Iterator it=o.iterator();
-                StringBuilder sb =new StringBuilder();
-                while (it.hasNext()){
-                    sb.append("#"+it.next());
-                }
-                return sb.toString();
-            }
-        });
+        boolean ans = new WordSearch().exist(new char[][]{{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}}, "SEE");
+
         System.out.println(ans);
     }
 
