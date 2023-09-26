@@ -1,59 +1,28 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class GenerateSubsets {
-    final int SET = 1;
-    final int UNSET = -SET;
-    Set<String> set = null;
 
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
-        set = new HashSet<>();
-        int[] maskArray = createMaskArray(nums.length);
-        generateSubSets(ans, nums, maskArray, 0);
+        ans.add(new ArrayList<>());
+        List<Integer> current = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            traverse(i, ans, current, nums);
+        }
         return ans;
     }
 
-    void generateSubSets(List<List<Integer>> ans, int[] nums, int[] maskArray, int currentlyMasked) {
-        if (currentlyMasked > nums.length) {
+    private void traverse(int i, List<List<Integer>> ans, List<Integer> current, int[] nums) {
+        if (i >= nums.length) {
             return;
         }
 
-        if (collectAns(ans, nums, maskArray)) {
-            for (int i = 0; i < maskArray.length; i++) {
-                if (maskArray[i] == UNSET) {
-                    maskArray[i] = SET;
-                    generateSubSets(ans, nums, maskArray, currentlyMasked + 1);
-                    maskArray[i] = UNSET;
-                }
-            }
+        current.add(nums[i]);
+        ans.add(current.stream().collect(Collectors.toList()));
+        for (int j = i + 1; j < nums.length; j++) {
+            traverse(j, ans, current, nums);
         }
-
-    }
-
-    private boolean collectAns(List<List<Integer>> ans, int[] nums, int[] maskArray) {
-        String hash = Arrays.stream(maskArray).mapToObj(String::valueOf).reduce((x, y) -> {
-            return x + "#" + y;
-        }).toString();
-        if (set.contains(hash)) {
-            return false;
-        }
-
-        List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < maskArray.length; i++) {
-            if (maskArray[i] == SET) {
-                result.add(nums[i]);
-            }
-        }
-        ans.add(result);
-        set.add(hash);
-        return true;
-    }
-
-    int[] createMaskArray(int n) {
-        int[] maskArray = new int[n];
-        for (int i = 0; i < n; i++) {
-            maskArray[i] = UNSET;
-        }
-        return maskArray;
+        current.remove(current.size() - 1);
     }
 }
