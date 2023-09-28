@@ -8,9 +8,9 @@ import java.util.List;
 
 public class Solution {
     public static void main(String args[]) {
-//        boolean ans = new WordSearch().exist(new char[][]{{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}}, "SEE");
 
-        System.out.println(Arrays.toString(new FindRange().searchRange(new int[] {5,7,7,8,8,10},8)));
+        ;
+        System.out.println(new MergeIntervals().merge(new int[][]{{1,30},{8,10},{15,18},{2,6}}));
     }
 
     public static void printArray(Object[] arr) {
