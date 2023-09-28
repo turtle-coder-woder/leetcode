@@ -10,7 +10,7 @@ public class Solution {
     public static void main(String args[]) {
         int[][] x=new int[][]{{0,30},{5,10},{15,20}};
         int[][] y=new int[][]{{6,15},{13,20},{6,17}};
-        System.out.println(new RequiredMeetingRooms().minMeetingRooms(x));
+        System.out.println(new JumpGame().canJump(new int[]{0}));
     }
 
     public static void printArray(Object[] arr) {
