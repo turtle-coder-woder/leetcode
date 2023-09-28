@@ -8,9 +8,7 @@ import java.util.List;
 
 public class Solution {
     public static void main(String args[]) {
-
-        ;
-        System.out.println(new MergeIntervals().merge(new int[][]{{1,30},{8,10},{15,18},{2,6}}));
+        System.out.println(new SerachInRotatedArray().search(new int[]{4,5,6,7,0,1,2},3));
     }
 
     public static void printArray(Object[] arr) {
