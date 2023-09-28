@@ -8,7 +8,9 @@ import java.util.List;
 
 public class Solution {
     public static void main(String args[]) {
-        System.out.println(new SerachInRotatedArray().search(new int[]{4,5,6,7,0,1,2},3));
+        int[][] x=new int[][]{{0,30},{5,10},{15,20}};
+        int[][] y=new int[][]{{6,15},{13,20},{6,17}};
+        System.out.println(new RequiredMeetingRooms().minMeetingRooms(x));
     }
 
     public static void printArray(Object[] arr) {
