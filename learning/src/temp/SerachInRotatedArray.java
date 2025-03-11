@@ -1,3 +1,5 @@
+package temp;
+
 public class SerachInRotatedArray {
     public int search(int[] nums, int target) {
         int pivotIndex = getPivotIndex(nums, 0, nums.length);

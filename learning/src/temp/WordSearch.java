@@ -1,3 +1,5 @@
+package temp;
+
 public class WordSearch {
     Integer row, col;
 

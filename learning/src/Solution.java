@@ -1,5 +1,6 @@
 import easyCollection.*;
 import helper.MissingRange;
+import temp.CoinChange;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -8,9 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static void main(String args[]) {
-        int[][] x=new int[][]{{0,30},{5,10},{15,20}};
-        int[][] y=new int[][]{{6,15},{13,20},{6,17}};
-        System.out.println(new JumpGame().canJump(new int[]{0}));
+        int[] x = {186,419,83,408};
+        int amt=6249;
+        System.out.println(new CoinChange().coinChange(x,amt));
     }
 
     public static void printArray(Object[] arr) {

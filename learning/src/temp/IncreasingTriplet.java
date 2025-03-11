@@ -1,3 +1,5 @@
+package temp;
+
 public class IncreasingTriplet {
     public boolean increasingTriplet(int[] nums) {
         if (nums.length < 3) {

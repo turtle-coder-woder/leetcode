@@ -1,3 +1,5 @@
+package temp;
+
 class FindRange {
     public int[] searchRange(int[] nums, int target) {
         int leftmost = binarySearchLeft(nums, target, 0, nums.length - 1);

@@ -1,3 +1,5 @@
+package temp;
+
 public class JumpGame {
     public boolean canJump(int[] nums) {
         int maxRange = nums[0];

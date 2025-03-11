@@ -1,3 +1,5 @@
+package temp;
+
 public class FindPeak {
     public int findPeakElement(int[] nums) {
         Integer peakIndex = 0;
