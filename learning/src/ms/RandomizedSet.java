@@ -1,5 +1,5 @@
 package ms;
-
+import java.util.*;
 class RandomizedSet {
     HashMap<Integer,Integer> map =null;
     List<Integer> list = null;
@@ -31,7 +31,7 @@ class RandomizedSet {
             list.remove(toBeDeletedPosition);
             map.remove(val);
             if(toBeDeletedPosition!=list.size() && !list.isEmpty()){
-                val = list.removeLast();
+                val = list.remove(list.size()-1);
                 list.add(toBeDeletedPosition,val);
                 map.put(val,toBeDeletedPosition);
             }

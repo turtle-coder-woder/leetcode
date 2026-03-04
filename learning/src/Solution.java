@@ -1,17 +1,12 @@
-import easyCollection.*;
-import helper.MissingRange;
-import temp.CoinChange;
+import p150problems.RomanToInteger;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Iterator;
-import java.util.List;
 
 public class Solution {
     public static void main(String args[]) {
-        int[] x = {186,419,83,408};
-        int amt=6249;
-        System.out.println(new CoinChange().coinChange(x,amt));
+        int ans = new RomanToInteger().romanToInt("MCMXCIV");
+        System.out.println(ans);
     }
 
     public static void printArray(Object[] arr) {
