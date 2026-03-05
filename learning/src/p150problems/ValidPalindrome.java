@@ -2,7 +2,7 @@ package p150problems;
 
 public class ValidPalindrome {
     //refine string , make it all lowercase, remove spaces, remove special chars, only keep alphanumeric  chars
-    //now from refined string , make it to charArray & try reading from 3 pointers left and right
+    //now from refined string , make it to charArray & try reading from 2 pointers left and right
     //keep check character at left and right index, if they are not same retrun false
     // else keep on incrementing and decrementing right till we have left<right
     public boolean isPalindrome(String s) {
