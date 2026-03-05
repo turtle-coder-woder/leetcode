@@ -2,6 +2,10 @@ package p150problems;
 
 import java.util.Stack;
 
+/*
+* Keep 2 stacks 1 for normal stack values and another for only min stack values so that
+* all operations are under O(1)
+ */
 public class MinStack {
     Stack<Integer> normalStack;
     Stack<Integer> stackForMinValueTracking;
