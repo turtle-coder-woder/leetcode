@@ -3,8 +3,8 @@ package p150problems.helper;
 
 //Definition for singly-linked list.
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
     ListNode() {
     }
