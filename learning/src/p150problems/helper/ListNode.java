@@ -66,4 +66,9 @@ public class ListNode {
 
         System.out.print("X");
     }
+
+    @Override
+    public String toString() {
+        return val+"";
+    }
 }
