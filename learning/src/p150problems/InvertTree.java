@@ -1,7 +1,6 @@
 package p150problems;
 
 import easyCollection.TreeNode;
-import p150problems.helper.ListNode;
 
 public class InvertTree {
     public TreeNode invertTree(TreeNode root) {
