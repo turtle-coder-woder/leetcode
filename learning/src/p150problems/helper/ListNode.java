@@ -41,6 +41,22 @@ public class ListNode {
         return getLinkedListOf(size,0);
     }
 
+    public static ListNode getLinkedListFromArray(int[] ar) {
+        ListNode head = null;
+        ListNode temp = null;
+        for (int i = 0; i < ar.length; i++) {
+            ListNode node = new ListNode(ar[i]);
+            if (head == null) {
+                head = node;
+                temp = node;
+            } else {
+                temp.next = node;
+                temp = temp.next;
+            }
+        }
+        return head;
+    }
+
     public static void printLinkedList(ListNode head){
         System.out.println();
         while (head!=null){
