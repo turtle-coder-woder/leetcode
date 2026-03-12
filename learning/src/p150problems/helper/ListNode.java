@@ -18,11 +18,15 @@ public class ListNode {
         this.next = next;
     }
 
-    public static ListNode getLinkedListOf(int size){
+    public static ListNode getLinkedListOfWithOffset(int size,int offSetStart){
+        return getLinkedListOf(size,offSetStart);
+    }
+
+    private static ListNode getLinkedListOf(int size, int offSetStart){
         ListNode[] nodes = new ListNode[size];
         //fill nodes in array
         for(int i=0;i<size;i++){
-            nodes[i] = new ListNode(i+1);
+            nodes[i] = new ListNode(offSetStart+i+1);
         }
 
         //now join them 0--8 as last one link will automatically be pointing to null
@@ -31,6 +35,10 @@ public class ListNode {
         }
 
         return nodes[0];//return as head
+    }
+
+    public static ListNode getLinkedListOf(int size){
+        return getLinkedListOf(size,0);
     }
 
     public static void printLinkedList(ListNode head){
