@@ -3,19 +3,31 @@ package p150problems;
 import easyCollection.TreeNode;
 
 public class MaxDepthOfBinaryTree {
+    /*
+        MENTAL MODEL — Max Depth of Binary Tree
+
+        Depth of a node = 1 + max(depth of left subtree, depth of right subtree)
+
+        Steps:
+        1. Ask left child its depth
+        2. Ask right child its depth
+        3. Take the larger one
+        4. Add 1 for the current node
+
+        Base case:
+        null node contributes depth = 0
+
+        Think:
+        "My height = 1 + deeper of my two children."
+    */
     public int maxDepth(TreeNode root) {
-        return maxDepthHelper(root,0);
-    }
-
-    private int maxDepthHelper(TreeNode root, int depth) {
         if(root==null){
-            return depth;
+            return 0;
         }
-
-        int depthLeft = maxDepthHelper(root.left,depth+1);
-        int depthRight = maxDepthHelper(root.right,depth+1);
-        return Math.max(depthLeft,depthRight);
+        return 1+Math.max(maxDepth(root.left),
+                maxDepth(root.right));
     }
+
 
     public static void main(String[] args){
         TreeNode node = new TreeNode(4);
