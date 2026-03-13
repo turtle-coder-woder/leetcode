@@ -11,8 +11,19 @@ public class MakeAllSubsets {
         if (nums.length == 0) {
             return ans;
         }
-        backtrackWithoutLoop(0,nums,ans,new ArrayList<Integer>());
+        backtrackWithLoop(0,nums,ans,new ArrayList<Integer>());
         return ans;
+    }
+
+    private void backtrackWithLoop(int i, int[] nums, List<List<Integer>> ans,
+                                   ArrayList<Integer> runningAns) {
+        ans.add(new ArrayList<>(runningAns));
+
+        for(;i<nums.length;i++){
+            runningAns.add(nums[i]);
+            backtrackWithLoop(i+1,nums,ans,runningAns);
+            runningAns.remove(runningAns.remove(runningAns.size()-1));
+        }
     }
 
     private void backtrackWithoutLoop(int i,int[] nums, List<List<Integer>> ans,
