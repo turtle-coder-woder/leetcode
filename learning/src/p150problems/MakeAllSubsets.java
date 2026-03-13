@@ -6,6 +6,7 @@ import java.util.List;
 
 public class MakeAllSubsets {
 
+
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
         if (nums.length == 0) {
@@ -22,7 +23,7 @@ public class MakeAllSubsets {
         for(;i<nums.length;i++){
             runningAns.add(nums[i]);
             backtrackWithLoop(i+1,nums,ans,runningAns);
-            runningAns.remove(runningAns.remove(runningAns.size()-1));
+            runningAns.remove(runningAns.size()-1);
         }
     }
 
