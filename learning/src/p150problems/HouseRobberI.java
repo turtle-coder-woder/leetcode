@@ -2,17 +2,14 @@ package p150problems;
 
 public class HouseRobberI {
     public int rob(int[] nums) {
-        int[] dp = new int[nums.length+2];
-        //fill array
-        for(int i=2;i<dp.length;i++){
-            dp[i]=nums[i-2];
+        int prev2 = 0; // i-2 tak ka best
+        int prev1 = 0; // i-1 tak ka best
+        for(int num : nums){
+            int curr = Math.max(num+prev1,prev2);
+            prev2=prev1;
+            prev1=curr;
         }
-
-        //compute ans
-        for(int i=2;i<dp.length;i++){
-            dp[i] = Math.max((dp[i]+dp[i-2]),dp[i-1]);
-        }
-        return dp[dp.length-1];
+        return prev1;
     }
 
     public static void main(String[] args){
