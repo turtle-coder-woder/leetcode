@@ -5,7 +5,7 @@ public class HouseRobberI {
         int prev2 = 0; // i-2 tak ka best
         int prev1 = 0; // i-1 tak ka best
         for(int num : nums){
-            int curr = Math.max(num+prev1,prev2);
+            int curr = Math.max(num+prev2,prev1);
             prev2=prev1;
             prev1=curr;
         }
