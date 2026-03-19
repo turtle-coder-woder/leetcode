@@ -11,7 +11,10 @@ public class HouseRobber4 {
     * */
     public int minCapability(int[] nums, int k) {
         int left=1;
-        int right = Arrays.stream(nums).max().getAsInt();
+        int right =0;
+        for(int num:nums){
+            right = Math.max(right,num);
+        }
         while(left<right){
             int mid= left +((right-left)/2);
             if(canRob(nums,k,mid)){
