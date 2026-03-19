@@ -3,12 +3,20 @@ package p150problems;
 import java.util.*;
 
 public class InsertIntervals {
-    static class Node{
+    static class Node implements Comparable<Node>{
         public int first;
         public int second;
         Node(int f, int s){
             first=f;
             second=s;
+        }
+
+        @Override
+        public int compareTo(Node o) {
+            if(o.first!=this.first){
+                return Integer.compare(o.first,this.first);
+            }
+            return Integer.compare(o.second,this.second);
         }
     }
     public int[][] insert(int[][] intervals, int[] newInterval) {
