@@ -2,57 +2,66 @@ package p150problems.other;
 import java.util.*;
 
 public class LengthOfLIS {
-// dp[i] = LIS length starting from index i
+    /*
+    dp[i] = LIS length starting from index i
 
-// Think:
-// "Agar main nums[i] se start karun,
-// toh future me kis element pe jump karne se
-// mujhe longest increasing subsequence milegi?"
+    Think:
+    "Agar main nums[i] se start karun,
+    toh future me kis element pe jump karne se
+    mujhe longest increasing subsequence milegi?"
 
-// For every i:
-//   check all j > i
-//   if nums[j] > nums[i]:
-//       i -> j possible
-//       candidate = 1 + dp[j]
-//       take best among all such j
+    For every i:
+    check all j > i
+    if nums[j] > nums[i]:
+    i -> j possible
+    candidate = 1 + dp[j]
+    take best among all such j
 
-// So:
-// dp[i] = max(1, 1 + dp[j]) for all j > i where nums[j] > nums[i]
+    So:
+    dp[i] = max(1, 1 + dp[j]) for all j > i where nums[j] > nums[i]
 
-// Base:
-// dp[i] = 1 (every element alone is LIS)
+    Base:
+    dp[i] = 1 (every element alone is LIS)
 
-// Fill from right to left (because dp[i] depends on dp[j])
+    Fill from right to left (because dp[i] depends on dp[j])
 
-    // Final answer:
-// max(dp[i]) over all i (LIS can start anywhere)
+    Final answer:
+    max(dp[i]) over all i (LIS can start anywhere)
 
 
 
-    // tails[len] = smallest possible tail value
-//              of an increasing subsequence of length len+1
+    tails[len] = smallest possible tail value
+      of an increasing subsequence of length len+1
 
-// Think:
-// "Har length ke liye best (smallest) ending kya ho sakti hai?"
+    Think:
+    "Har length ke liye best (smallest) ending kya ho sakti hai?"
 
-// Why smallest tail?
-// Smaller tail => future me extend karna easier
+    Why smallest tail?
+    Smaller tail => future me extend karna easier
 
-// For each num:
-//   binary search first index idx where tails[idx] >= num
+    For each num:
+    binary search first index idx where tails[idx] >= num
 
-//   if no such idx (num is largest):
-//       append -> new longer subsequence found
+    if no such idx (num is largest):
+    append -> new longer subsequence found
 
-//   else:
-//       replace tails[idx] = num
-//       (same length, but better/smaller tail)
+    else:
+    replace tails[idx] = num
+    (same length, but better/smaller tail)
 
-// Important:
-// tails is NOT an actual subsequence
-// it is only a summary of best tails per length
+    Important:
+    tails is NOT an actual subsequence
+    it is only a summary of best tails per length
 
-    // Answer = size of tails
+    Answer = size of tails
+
+
+    O(n^2):
+    "Current se best future kaunsa hai?"
+
+    O(n log n):
+    "Har length ke liye best ending kya hai?"0
+    */
     public int lengthOfLIS(int[] nums) {
         int dp[]=new int[nums.length];
         Arrays.fill(dp,1);//sab akele akele present hoti toh ans 1 hota na
