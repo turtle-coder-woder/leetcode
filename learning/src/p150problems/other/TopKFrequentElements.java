@@ -20,6 +20,12 @@ public class TopKFrequentElements {
     Note:
     - Better than sorting all elements when k is small.
     - Worst case can still become O(n log n) if k is close to n.
+
+    ab is se better complexity chaiye toh bucket sorting use kr lena
+    intiution: max frequency can be length og nums when all elements are same
+    so we can make bucket[nums.length] of frequency to values in array list
+    e.g bucket[3]-> array_list(23,41) means 23 and 41 are present 3 times
+    now traverse from behind of bucket and collect k elements only
     */
     public int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> freqMap = new HashMap<>();
