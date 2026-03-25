@@ -11,42 +11,35 @@ public class DecodeWays {
         if (s.equals("") || s.startsWith("0")) {
             return 0;
         }
-        List<List<Integer>> wayToDecode = new ArrayList<>();
-        List<Integer> singleAns = new ArrayList<>();
-        singleAns.add(Integer.parseInt("" + s.charAt(0)));
-        wayToDecode.add(singleAns);
+        int len = s.length();
+        int[] dp = new int[len + 1];
+        dp[0] = 1;
+        dp[1] = 1;
 
         for (int i = 1; i < s.length(); i++) {
             List<List<Integer>> newWayToDecode = new ArrayList<>();
 
-            for (List<Integer> way : wayToDecode) {
-                //pick this as single
-                int val = Integer.parseInt("" + s.charAt(i));
-                processValAsNewWay(newWayToDecode, way, val);
 
-                //pick this with previous
-
-                int lastNumberInWay = way.remove(way.size() - 1);
-                if (lastNumberInWay == 0 && val == 0) {
-                    return 0;
-                }
-                val = lastNumberInWay * 10 + val;
-                processValAsNewWay(newWayToDecode, way, val);
-
-
+            //pick this as single
+            int val = Integer.parseInt("" + s.charAt(i));
+            if (valueInAllowedRange(val)) {
+                dp[i + 1] += dp[i];
             }
-            wayToDecode = newWayToDecode;
+
+            //pick this with previous
+            int lastNumberInWay = Integer.parseInt("" + s.charAt(i - 1));
+            if (lastNumberInWay != 0) {
+                val = lastNumberInWay * 10 + val;
+                if (valueInAllowedRange(val)) {
+                    dp[i + 1] += dp[i - 1];
+                }
+            }
+
+
         }
-        return wayToDecode.size();
+        return dp[len];
     }
 
-    private void processValAsNewWay(List<List<Integer>> newWayToDecode, List<Integer> way, int val) {
-        if (valueInAllowedRange(val)) {
-            List<Integer> ansAsSinglePick = new ArrayList<>(way);
-            ansAsSinglePick.add(val);
-            newWayToDecode.add(ansAsSinglePick);
-        }
-    }
 
     private boolean valueInAllowedRange(int val) {
         return val <= 26 && val >= 1;
