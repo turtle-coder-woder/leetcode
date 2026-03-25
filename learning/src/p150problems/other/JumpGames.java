@@ -3,29 +3,52 @@ package p150problems.other;
 public class JumpGames {
     /*
      * Mental Model:
-     * - Har index se check karo ki kya last index tak pahunch sakte hain.
-     * - Current index se 1 to nums[index] tak har jump try karo.
-     * - Agar kisi bhi jump se end reachable hai, to current index bhi reachable hai.
-     * - Same index baar baar compute ho sakta hai, isliye memo use karte hain.
-     * - memo[index] = true/false batata hai ki us index se end tak pahunchna possible hai ya nahi.
+     * - We only care about the farthest index reachable so far.
+     * - If current index becomes greater than maxReach, that means this index is unreachable.
+     * - Otherwise, update maxReach using current index + jump length from here.
+     * - If maxReach reaches or crosses the last index, return true.
      *
-     * Base case:
-     * - Agar index last index ya uske aage pahunch gaya, to success.
-     *
-     * Optimization:
-     * - Bade jumps pehle try kar rahe hain taaki early success mil sake.
+     * Why Greedy works:
+     * - We do not need to try every path.
+     * - We only need to know the farthest boundary we can reach while moving left to right.
      *
      * Complexity:
+     * - Time: O(n)
+     * - Space: O(1)
+     *
+     *
+     * DP version idea:
+     * - From each index, try all possible jumps.
+     * - If any jump can reach the end, then current index can also reach the end.
+     * - Use memo to avoid recomputing the same index again and again.
+     *
+     * DP Complexity:
      * - Time: O(n^2)
      * - Space: O(n)
      */
     public boolean canJump(int[] nums) {
-        Boolean[] canJumpMemo = new Boolean[nums.length];
-        return canJumpHelper(nums, canJumpMemo, 0);
+//        Boolean[] canJumpMemo = new Boolean[nums.length];
+//        return canJumpHelper(nums, canJumpMemo, 0);
+        return canJumpGreedy(nums);
+    }
+
+    private boolean canJumpGreedy(int[] nums) {
+        int maxReach = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (maxReach >= nums.length - 1) {
+                return true;
+            }
+            if (i > maxReach) {
+                return false;
+            }
+            int currentMaxJump = nums[i];
+            maxReach = Math.max(maxReach, i+currentMaxJump);
+        }
+        return true;
     }
 
     private boolean canJumpHelper(int[] nums, Boolean[] memo, int index) {
-        if (index >= memo.length-1) {
+        if (index >= memo.length - 1) {
             return true;
         }
 
@@ -35,7 +58,7 @@ public class JumpGames {
 
         int maxJumpAllowed = nums[index];
 
-        for (int i = maxJumpAllowed; i >=1; i--) {
+        for (int i = maxJumpAllowed; i >= 1; i--) {
             if (canJumpHelper(nums, memo, index + i)) {
                 memo[index] = true;
                 return true;
@@ -47,7 +70,9 @@ public class JumpGames {
     }
 
     public static void main(String[] args) {
-        int[] ar = new int[]{3, 2, 1, 0, 4};
-        System.out.println(new JumpGames().canJump(ar));
+        int[] arTrue = new int[]{2, 3, 1, 1, 4};
+        System.out.println(new JumpGames().canJump(arTrue));
+        int[] arFalse = new int[]{3,2,1,0,4};
+        System.out.println(new JumpGames().canJump(arFalse));
     }
 }
