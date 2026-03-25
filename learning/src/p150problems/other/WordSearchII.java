@@ -191,8 +191,7 @@ public class WordSearchII {
         Set<String> ans = new HashSet<>();
         for (int i = 0; i < M; i++) {
             for (int j = 0; j < N; j++) {
-                    int[][] visited = new int[M][N];
-                    dfs(board, visited, i, j, M, N, ans,trie);
+                    dfs(board, i, j, M, N, ans,trie);
             }
         }
 
@@ -200,17 +199,18 @@ public class WordSearchII {
         return Arrays.asList(ar);
     }
 
-    private void dfs(char[][] board, int[][] visited, int i, int j,
+    private void dfs(char[][] board, int i, int j,
                      int M, int N, Set<String> ans, Trie trie) {
-        if (i < 0 || j < 0 || i >= M || j >= N || visited[i][j] == 1) {
+        if (i < 0 || j < 0 || i >= M || j >= N || board[i][j] == '#') {
             return;
         }
 
-        visited[i][j] = 1;
+
         char currentChar = board[i][j];
+        board[i][j] = '#'; //visiting
         int index = currentChar-'a';
         if (trie==null || trie.childrens[index]==null) {
-            visited[i][j] = 0;
+            board[i][j] = currentChar; //unvisited
             return;
         }
 
@@ -221,9 +221,9 @@ public class WordSearchII {
         for (int x = 0; x < 4; x++) {
             int newX = i + dx[x];
             int newY = j + dy[x];
-            dfs(board, visited, newX, newY, M, N, ans, trie.childrens[index]);
+            dfs(board, newX, newY, M, N, ans, trie.childrens[index]);
         }
-        visited[i][j] = 0;
+        board[i][j] = currentChar; //unvisited
     }
 
     public static void main(String[] args) {
