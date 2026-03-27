@@ -17,9 +17,6 @@ public class DecodeWays {
         dp[1] = 1;
 
         for (int i = 1; i < s.length(); i++) {
-            List<List<Integer>> newWayToDecode = new ArrayList<>();
-
-
             //pick this as single
             int val = Integer.parseInt("" + s.charAt(i));
             if (valueInAllowedRange(val)) {
