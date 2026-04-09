@@ -39,9 +39,9 @@ public class CourseScheduleI {
         visitedMap.put(course,1); //put this course in visiting
         //Collections.emptyList() vs new ArrayList<>() ====>>>>>
         // Collections.emptyList() creates no extra memory but new ArrayList<>() creates extra memory
-        List<Integer> dependencies = edges.getOrDefault(course,Collections.emptyList());
-        for (Integer dependency : dependencies) {
-            if (hasCycleDFS(edges, dependency, visitedMap)) {
+        List<Integer> dependentCourses = edges.getOrDefault(course,Collections.emptyList());
+        for (Integer dependentCourse : dependentCourses) {
+            if (hasCycleDFS(edges, dependentCourse, visitedMap)) {
                 return true;
             }
         }
