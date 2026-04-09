@@ -8,7 +8,6 @@ public class Permutation {
         }
 
         List<Integer> runningAns = new ArrayList<>();
-        int index=0;
         boolean[] visited = new boolean[nums.length];
         backtrack(visited,nums,ans,runningAns);
         return ans;
@@ -30,5 +29,14 @@ public class Permutation {
                 runningAns.remove(runningAns.size()-1);
             }
         }
+    }
+
+    public static void main(String[] args){
+        int[] ar = new int[]{1,2,3,4,5};
+        List<List<Integer>> ans = new Permutation().permute(ar);
+        ans.forEach(x-> {
+            x.forEach(y-> System.out.print(y+","));
+            System.out.println();
+        });
     }
 }
