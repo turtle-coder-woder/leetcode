@@ -19,19 +19,19 @@ class Node {
 }
 
 public class CloneGraph {
-    Map<Node,Node>mapOfNodes = new HashMap<>();
+    Map<Node,Node> mapOfOriginalNodeToClonedNode = new HashMap<>();
 
     public Node cloneGraph(Node node) {
         if(node==null){
             return null;
         }
 
-        if(mapOfNodes.containsKey(node)){
-            return mapOfNodes.get(node);
+        if(mapOfOriginalNodeToClonedNode.containsKey(node)){
+            return mapOfOriginalNodeToClonedNode.get(node);
         }
 
         Node cloneNode = new Node(node.val);
-        mapOfNodes.put(node,cloneNode);
+        mapOfOriginalNodeToClonedNode.put(node,cloneNode);
         for(Node neighbhour : node.neighbors){
             cloneNode.neighbors.add(cloneGraph(neighbhour));
         }
