@@ -35,7 +35,7 @@ public class CombinationSum {
         //unpick
         runningSum -= candidates[index];
         runningAns.remove(runningAns.size() - 1);
-        backtrack(candidates, target, index + 1, runningSum, ans, runningAns); //dont change index as we can picking same value again
+        backtrack(candidates, target, index + 1, runningSum, ans, runningAns); //change index as we  have done picking above candidate, its time to move on
     }
 
     public static void main(String[] args) {
