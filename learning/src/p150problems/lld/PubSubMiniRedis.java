@@ -165,6 +165,7 @@ public class PubSubMiniRedis {
 
         // Subscribe
         broker.subscribe("sports", sub1);
+        broker.subscribe("sports", sub1);
         broker.subscribe("sports", sub2);
 
         // Publish messages
