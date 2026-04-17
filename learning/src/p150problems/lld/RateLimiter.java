@@ -17,6 +17,9 @@ public class RateLimiter {
     int maxRequestAllowed;
     public RateLimiter(long windowSizeInSeconds,
             int maxRequestAllowed){
+        if (windowSizeInSeconds <= 0 || maxRequestAllowed <= 0) {
+            throw new IllegalArgumentException("window and maxRequestAllowed must be > 0");
+        }
         this.mapOfUserToQueueOfRequest = new HashMap<>();
         this.windowSizeInMilli = 1000L * windowSizeInSeconds;
         this.maxRequestAllowed = maxRequestAllowed;
