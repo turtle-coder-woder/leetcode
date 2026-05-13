@@ -1,44 +1,26 @@
 package p150problems.batista;
-import java.util.*;
 
 public class NearestValidPoint {
-    public int nearestValidPoint(int tx, int ty, int[][] points) {
-        PriorityQueue<Point> pointsList = new PriorityQueue<>(new Comparator<Point>() {
-            @Override
-            public int compare(Point o1, Point o2) {
-                if(o1.manhatanDistance==o2.manhatanDistance){
-                    return Integer.compare(o1.index,o2.index);
+    public int nearestValidPoint(int x, int y, int[][] points) {
+        int minDist = Integer.MAX_VALUE;
+        int resultIdx = -1;
+
+        for (int i = 0; i < points.length; i++) {
+            if (x == points[i][0] || y == points[i][1]) {
+                int manDist = Math.abs(x - points[i][0]) + Math.abs(y - points[i][1]);
+                if (manDist < minDist) {
+                    minDist = manDist;
+                    resultIdx = i;
+                } else if (manDist == minDist) {
+                    resultIdx = Math.min(resultIdx, i);
                 }
-                return Integer.compare(o1.manhatanDistance,o2.manhatanDistance);
-            }
-        });
-        for(int i=0;i<points.length;i++){
-            int[] p = points[i];
-            int x = p[0];
-            int y = p[1];
-            if(x==tx || y==ty){
-                pointsList.add(new Point(x,y,i,tx,ty));
             }
         }
 
-        return pointsList.isEmpty()? -1 : pointsList.poll().index;
+        return resultIdx;
     }
 
-    class Point{
-        int x;
-        int y;
-        int index;
-        int manhatanDistance;
-
-        public Point(int x, int y, int i, int tx, int ty) {
-            this.x=x;
-            this.y=y;
-            this.index=i;
-            this.manhatanDistance = Math.abs(x-tx)+Math.abs(y-ty);
-        }
-    }
-
-    public static void main(String[] args){
-        System.out.println(new NearestValidPoint().nearestValidPoint(3,4,new int[][]{{2,3}}));
+    public static void main(String[] args) {
+        System.out.println(new NearestValidPoint().nearestValidPoint(3, 4, new int[][]{{2, 3}}));
     }
 }
